@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import HomePage from "./pages/homePage/HomePage.component";
+import ShopPage from './pages/shop/ShopPage.component';
 import "./pages/homePage/HomePage.Style.scss";
 import { Route, Switch } from "react-router-dom";
 
@@ -47,6 +48,8 @@ function App() {
 				<Route path="/girls" component={GirlsPage} />
 				<Route path="/boys" component={BoysPage} />
 				<Route path="/accessories" component={AccessoriesPage} />
+				<Route path="/shop" component={ShopPage}/>
+				
 
 
 			</Switch>
