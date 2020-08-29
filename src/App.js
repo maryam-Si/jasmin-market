@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import HomePage from "./pages/homePage/HomePage.component";
 import ShopPage from './pages/shop/ShopPage.component';
+import Header from './components/header/header.component';
 import "./pages/homePage/HomePage.Style.scss";
 import { Route, Switch } from "react-router-dom";
 
@@ -41,6 +42,7 @@ const AccessoriesPage = () => (
 function App() {
 	return (
 		<div>
+			<Header/>
 			<Switch>
 				<Route exact path="/" component={HomePage} />
 				<Route path="/men" component={MenPage} />

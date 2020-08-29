@@ -2,3 +2,25 @@ body {
     font-family: 'Open Sans Condensed';
     padding: 20px 60px;
   }
+  a{
+    text-decoration: none;
+  }
+  /* unvisited link */
+a:link {
+  color: rgb(17, 16, 16);
+}
+
+/* visited link */
+a:visited {
+  color: rgb(98, 0, 128);
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+/* selected link */
+a:active {
+  color: blue;
+}
