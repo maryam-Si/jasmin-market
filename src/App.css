@@ -24,3 +24,7 @@ a:hover {
 a:active {
   color: blue;
 }
+
+*{
+  box-sizing:border-box;
+}

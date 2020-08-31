@@ -6,6 +6,9 @@ import ShopPage from './pages/shop/ShopPage.component';
 import Header from './components/header/header.component';
 import "./pages/homePage/HomePage.Style.scss";
 import { Route, Switch } from "react-router-dom";
+import SignIn from "./components/SignIn/SignIn.component";
+import {auth} from './firebase/firebase.utils';
+import { from } from "rxjs";
 
 const MenPage = () => (
 	<div>
@@ -39,24 +42,45 @@ const AccessoriesPage = () => (
 
 
 
-function App() {
-	return (
-		<div>
-			<Header/>
-			<Switch>
-				<Route exact path="/" component={HomePage} />
-				<Route path="/men" component={MenPage} />
-				<Route path="/women" component={WomenPage} />
-				<Route path="/girls" component={GirlsPage} />
-				<Route path="/boys" component={BoysPage} />
-				<Route path="/accessories" component={AccessoriesPage} />
-				<Route path="/shop" component={ShopPage}/>
-				
+class App extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state={
+			currentUser:null
+		}
+	}
+	unsubcribeFromAuth = null;
 
+	componentWillMount(){
+		this.unsubcribeFromAuth = auth.onAuthStateChanged(user =>{
+			this.setState({currentUser:user})
+		});
 
-			</Switch>
-		</div>
-	);
+	}
+
+	componentWillUnmount(){
+		this.unsubcribeFromAuth(); 
+	}
+	render(){
+		return (
+			<div>
+				<Header currentUser={this.state.currentUser}/>
+				<Switch>
+					<Route exact path="/" component={HomePage} />
+					<Route path="/men" component={MenPage} />
+					<Route path="/women" component={WomenPage} />
+					<Route path="/girls" component={GirlsPage} />
+					<Route path="/boys" component={BoysPage} />
+					<Route path="/accessories" component={AccessoriesPage} />
+					<Route path="/shop" component={ShopPage}/>
+					<Route path='/signIn' component={SignIn}/>
+	
+	
+				</Switch>
+			</div>
+		); 
+	}
+	
 }
 
 export default App;
